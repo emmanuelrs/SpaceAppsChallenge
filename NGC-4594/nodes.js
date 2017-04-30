@@ -39,15 +39,19 @@ links.forEach(function(link) {
   link.target = nodes[link.target] || (nodes[link.target] = {name: link.target, id: link.id});
 });
 
+$("#changeButton").on('click', function(){
+  console.log("hola");
+  //width = 500;
+})
 
-var width = 1366,
-    height = 768;
+var width = 700,
+    height = 400;
 
 var force = d3.layout.force()
     .nodes(d3.values(nodes))
     .links(links)
     .size([width, height])
-    .linkDistance(300)
+    .linkDistance(350)
     .charge(-300)
     .on("tick", tick)
     .start();
