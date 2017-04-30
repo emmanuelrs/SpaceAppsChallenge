@@ -1,34 +1,10 @@
 
 // http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
 var links = [
-  {source: "Microsoft", target: "Amazon", type: "licensing", id: 1},
-  {source: "Microsoft", target: "HTC", type: "licensing", id: 1},
-  {source: "Samsung", target: "Apple", type: "suit", id: 1},
-  {source: "Motorola", target: "Apple", type: "suit", id: 1},
-  {source: "Nokia", target: "Apple", type: "resolved", id: 1},
-  {source: "HTC", target: "Apple", type: "suit", id: 1},
-  {source: "Kodak", target: "Apple", type: "suit", id: 1},
-  {source: "Microsoft", target: "Barnes & Noble", type: "suit", id: 1},
-  {source: "Microsoft", target: "Foxconn", type: "suit", id: 1},
-  {source: "Oracle", target: "Google", type: "suit", id: 1},
-  {source: "Apple", target: "HTC", type: "suit", id: 1},
-  {source: "Microsoft", target: "Inventec", type: "suit", id: 1},
-  {source: "Samsung", target: "Kodak", type: "resolved", id: 1},
-  {source: "LG", target: "Kodak", type: "resolved", id: 1},
-  {source: "RIM", target: "Kodak", type: "suit", id: 1},
-  {source: "Sony", target: "LG", type: "suit", id: 1},
-  {source: "Kodak", target: "LG", type: "resolved", id: 1},
-  {source: "Apple", target: "Nokia", type: "resolved", id: 1},
-  {source: "Qualcomm", target: "Nokia", type: "resolved", id: 1},
-  {source: "Apple", target: "Motorola", type: "suit", id: 1},
-  {source: "Microsoft", target: "Motorola", type: "suit", id: 1},
-  {source: "Motorola", target: "Microsoft", type: "suit", id: 1},
-  {source: "Huawei", target: "ZTE", type: "suit", id: 1},
-  {source: "Ericsson", target: "ZTE", type: "suit", id: 1},
-  {source: "Kodak", target: "Samsung", type: "resolved", id: 1},
-  {source: "Apple", target: "Samsung", type: "suit", id: 1},
-  {source: "Kodak", target: "RIM", type: "suit", id: 1},
-  {source: "Nokia", target: "Qualcomm", target: "Apple", type: "suit", type: "resolved", id: 1}
+  {source: "Acrónimos", target: "Universo", type: "licensing", id: 1},
+  {source: "Universo", target: "NASA", type: "licensing", id: 1},
+  {source: "NASA", target: "Ciencias", type: "suit", id: 1},
+  {source: "Ciencias", target: "Acrónimos", type: "suit", id: 1}
 ];
 
 var nodes = {};
@@ -39,12 +15,12 @@ links.forEach(function(link) {
   link.target = nodes[link.target] || (nodes[link.target] = {name: link.target, id: link.id});
 });
 
-$("#changeButton").on('click', function(){
-  console.log("hola");
+$("#searchButton").on('click', function(){
+  window.location.replace('searchResult.html');
   //width = 500;
 })
 
-var width = 700,
+var width = 1000,
     height = 400;
 
 var force = d3.layout.force()
@@ -90,7 +66,7 @@ var circle = svg.append("g").selectAll("circle")
     .attr("name", function(d,i){return d.name;})
     .attr("id", function(d,i){return d.id;})
     .on('dblclick', function(){
-      console.log(this.getAttribute("name"))
+      window.location.replace('categoryResult.html');
     })
     .call(force.drag);
 
